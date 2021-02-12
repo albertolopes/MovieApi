@@ -1,0 +1,30 @@
+{
+  "name": "elegibilidade-api",
+  "description": "Api de elegibilidade jornada do cliente",
+  "version": "1.0.19226",
+  "main": "index.js",
+  "author": {
+    "name": ""
+  },
+  "scripts": {
+    "dev": "nodemon ./index.js",
+    "pm2": "pm2 start ./index.js --name elegibilidade-api --exp-backoff-restart-delay=5000"
+  },
+  "dependencies": {
+    "@qualitech/qneo4j": "^4.1.4",
+    "axios": "0.18.0",
+    "convert-excel-to-json": "^1.7.0",
+    "exceljs": "^4.1.1",
+    "fs": "0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "1.9.0",
+    "restify": "7.0.0",
+    "restify-cors-middleware": "1.1.1",
+    "restify-errors": "^8.0.1",
+    "restify-https": "0.0.3",
+    "rotating-file-stream": "1.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "1.19.1"
+  }
+}
