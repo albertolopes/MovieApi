@@ -2,23 +2,46 @@ const queries = require("../db/cqlMovie");
 const execultCyper = require("../db/executeCypher")
 
 exports.model = {
-  async getAll() {
-    const cql = queries.cql.backoffice.findAll();
-    return await execultCyper.executeCypherAsync(cql);
+  async findAll() {
+    return await execultCyper.executeCypherAsync(
+      queries.cql.backoffice.findAll()
+    );
   },
 
-  async getById(req){
-    const cql = queries.cql.backoffice.findById(req.params.id);
-    return await execultCyper.executeCypherAsync(cql);
+  async findById(id){
+    return await execultCyper.executeCypherAsync(
+      queries.cql.backoffice.findById(id)
+    );
   },
 
-  async findMovieByDirector(req){
-    const cql = queries.cql.backoffice.findMovieByDirector(req.params.name);
-    return await execultCyper.executeCypherAsync(cql);
+  async findMovieByDirector(name){
+    return await execultCyper.executeCypherAsync(
+      queries.cql.backoffice.findMovieByDirector(name)
+    );
   },
 
-  async findMovieByActor(req){
-    const cql = queries.cql.backoffice.findMovieByActor(req.params.name);
-    return await execultCyper.executeCypherAsync(cql);
+  async findMovieByActor(name){
+    return await execultCyper.executeCypherAsync(
+      queries.cql.backoffice.findMovieByActor(name)
+    );
+  },
+
+  async updateMovie(object){
+    const currentMovie = await this.findById(object.id);
+    return await execultCyper.executeCypherAsync(
+      queries.cql.backoffice.updateMovie(object, currentMovie[0])
+    );
+  },
+
+  async createMovie(object) {
+    return await execultCyper.executeCypherAsync(
+      queries.cql.backoffice.createMovie(object)
+    );
+  },
+
+  async deleteMovie(id) {
+    return await execultCyper.executeCypherAsync(
+      queries.cql.backoffice.deleteMovie(id)
+    );
   }
 };

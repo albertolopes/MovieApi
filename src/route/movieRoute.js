@@ -13,5 +13,8 @@ server.get("/movie", movieController.findAll);
 server.get("/movie/:id", movieController.findById);
 server.get("/movie/director/:name", movieController.findMovieByDirector);
 server.get("/movie/actor/:name", movieController.findMovieByActor);
+server.put("/movie", movieController.updateMovie);
+server.post("/movie", movieController.createMovie);
+server.del("/movie/:id", movieController.deleteMovie);
 
 exports.server = server;
