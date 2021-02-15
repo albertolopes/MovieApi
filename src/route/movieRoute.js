@@ -1,20 +1,13 @@
 const restify = require("restify");
+var movieRoute = require('restify-router').Router;
 const movieController = require("../controller/movieController");
-const log = require("../config/log").log;
 
-const server = restify.createServer();
+movieRoute.get("/movie", movieController.findAll);
+movieRoute.get("/movie/:id", movieController.findById);
+movieRoute.get("/movie/director/:name", movieController.findMovieByDirector);
+movieRoute.get("/movie/actor/:name", movieController.findMovieByActor);
+movieRoute.put("/movie", movieController.updateMovie);
+movieRoute.post("/movie", movieController.createMovie);
+movieRoute.del("/movie/:id", movieController.deleteMovie);
 
-server.use(log);
-server.use(restify.plugins.fullResponse());
-server.use(restify.plugins.bodyParser());
-server.use(restify.plugins.queryParser());
-
-server.get("/movie", movieController.findAll);
-server.get("/movie/:id", movieController.findById);
-server.get("/movie/director/:name", movieController.findMovieByDirector);
-server.get("/movie/actor/:name", movieController.findMovieByActor);
-server.put("/movie", movieController.updateMovie);
-server.post("/movie", movieController.createMovie);
-server.del("/movie/:id", movieController.deleteMovie);
-
-exports.server = server;
+module.exports = movieRoute;

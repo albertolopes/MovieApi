@@ -34,26 +34,24 @@ exports.findMovieByActor = async function (req, res) {
 
 exports.updateMovie = async function (req, res) {
   try {
-    res.send(
-      await model.updateMovie(req.body)
-    );
+    res.send(await model.updateMovie(req.body));
   } catch (error) {
     console.log("Error to update movie");
   }
-}
+};
 
 exports.createMovie = async function (req, res) {
   try {
-    res.send(await model.createMovie(req.body))
+    res.send(await model.createMovie(req.body));
   } catch (error) {
     console.log("Error to create movie");
   }
-}
+};
 
 exports.deleteMovie = async function (req, res) {
   // try {
-    res.send(await model.deleteMovie(req.params.id))
+  res.send(await model.deleteMovie(req.params.id));
   // } catch (error) {
   //   console.log("Error to delete movie");
   // }
-}
+};
