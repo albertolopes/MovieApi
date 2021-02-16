@@ -1,5 +1,5 @@
 var appConfigs = require("./app-services-configs");
-const api_server = require("./src/route/movieRoute");
+const api_server = require("./src/route/route");
 
 async function startup() {
   console.log("Iniciando a aplicação...");
